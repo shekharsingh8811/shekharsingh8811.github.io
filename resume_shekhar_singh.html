@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shekhar Singh — Resume</title>
+    <style>
+        /* ── Reset & Base ─────────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 14px; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #2d2d2d;
+            background: #f4f4f4;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Page container (A4-ish) ──────────────────────── */
+        .page {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 40px 48px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+            border-radius: 4px;
+        }
+
+        /* ── Header ───────────────────────────────────────── */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #d0d8e8;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #7a8aa8;
+            border: 2px solid #c0c8d8;
+        }
+
+        .header .header-text { text-align: left; }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .header .contact {
+            font-size: .85rem;
+            color: #666;
+        }
+
+        .header .contact a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .header .contact a:hover { text-decoration: underline; }
+
+        .header .contact .sep { margin: 0 8px; color: #bbb; }
+
+        .header .contact .icon {
+            width: 14px;
+            height: 14px;
+            vertical-align: -2px;
+            margin-right: 4px;
+            fill: #666;
+        }
+
+        /* ── Section ──────────────────────────────────────── */
+        .section { margin-bottom: 20px; }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* ── Summary ──────────────────────────────────────── */
+        .summary {
+            font-size: .9rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* ── Experience entry ─────────────────────────────── */
+        .entry { margin-bottom: 18px; }
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-size: .95rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .entry-date {
+            font-size: .82rem;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        .entry-org {
+            font-size: .88rem;
+            color: #555;
+            margin-bottom: 1px;
+        }
+
+        .entry-location {
+            font-size: .8rem;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .entry-summary {
+            font-size: .87rem;
+            color: #444;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .entry ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .entry li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 3px;
+            font-size: .87rem;
+            color: #333;
+        }
+
+        .entry li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #1a73e8;
+            font-size: .8rem;
+            top: 1px;
+        }
+
+        /* ── Sub-role (grouped under same company) ────── */
+        .sub-role {
+            margin-top: 12px;
+            padding-left: 15px;
+            border-left: 3px solid #e8e8e8;
+        }
+
+        .sub-role .entry-title { font-size: .9rem; }
+
+        /* ── Skills grid ──────────────────────────────────── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            row-gap: 5px;
+            column-gap: 10px;
+            font-size: .87rem;
+        }
+
+        .skills-grid .label {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .skills-grid .value { color: #444; }
+
+        /* ── Awards list ──────────────────────────────────── */
+        .awards-list { columns: 2; column-gap: 24px; }
+
+        .awards-list li {
+            font-size: .85rem;
+            break-inside: avoid;
+        }
+
+        /* ── Print tweaks ─────────────────────────────────── */
+        @media print {
+            body { background: #fff; }
+            .page {
+                margin: 0;
+                padding: 24px 32px;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+        }
+
+        @page {
+            margin: 0.4in;
+            size: A4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <div class="header">
+        <div class="header-text">
+        <h1>Shekhar Singh</h1>
+        <div class="subtitle">Data Scientist</div>
+        <div class="contact">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Hamburg, Germany
+            <span class="sep">|</span>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.01l-2.2 2.21z"/></svg>+4917685513309
+            <span class="sep">|</span>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>shekharsingh8811@gmail.com
+            <span class="sep">|</span>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>https://shekharsingh8811.github.io
+            <br>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>https://www.linkedin.com/in/shekhar-singh-51b880131
+            <span class="sep">|</span>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>https://github.com/shekharsingh8811
+        </div>
+        </div><!-- /.header-text -->
+    </div>
+
+    <!-- ═══════════ SUMMARY ═══════════ -->
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+            Data Scientist with 12+ years of experience spanning computer vision, deep learning, IoT analytics, and enterprise data engineering.
+            Currently building perception systems for autonomous vehicles and safety-critical applications at SICK Sensor Intelligence — from ROS2-based
+            edge stacks on NVIDIA hardware to cloud pipelines on Azure. Previously led a 15-member team delivering data warehousing and BI solutions for
+            global financial institutions at TCS. Proven ability to turn research prototypes into reliable, production-grade systems.
+        </p>
+    </div>
+
+    <!-- ═══════════ TECHNICAL SKILLS ═══════════ -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <span class="label">Languages</span>
+            <span class="value">Python, R, SQL, NoSQL, Shell Scripting</span>
+
+            <span class="label">ML / DL</span>
+            <span class="value">PyTorch, TensorFlow, Keras, Scikit-learn, TensorRT, ONNX, YOLOX, RTMDet, PointPillars, LLMs, ARIMA, Prophet, LSTM, XGBoost</span>
+
+            <span class="label">NLP</span>
+            <span class="value">spaCy, NLTK, NLP</span>
+
+            <span class="label">Computer Vision</span>
+            <span class="value">OpenCV, Scikit-Image, Object Detection, Tracking, Point-Cloud Processing, 2D → 3D Feature Extraction</span>
+
+            <span class="label">Data &amp; Analytics</span>
+            <span class="value">Pandas, NumPy, SciPy, Matplotlib, Seaborn, Tableau, Cognos, MicroStrategy, Grafana</span>
+
+            <span class="label">Cloud &amp; Infra</span>
+            <span class="value">AWS, Azure (VMs, Storage), Docker, Kubernetes, NVIDIA Jetson / TensorRT</span>
+
+            <span class="label">Robotics</span>
+            <span class="value">ROS2, Sensor Fusion, Perception Stacks, Edge Deployment</span>
+
+            <span class="label">Databases</span>
+            <span class="value">MySQL, Oracle DB, Sybase IQ, MongoDB, PL/SQL</span>
+
+            <span class="label">Tools &amp; DevOps</span>
+            <span class="value">Git, GitHub, GitLab, VS Code, Jupyter, Docker, Unix/Linux, Anaconda</span>
+
+            <span class="label">Methods</span>
+            <span class="value">Agile / Scrum, OOP, CI/CD, ETL, Time-Series Forecasting, Predictive Maintenance</span>
+        </div>
+    </div>
+
+    <!-- ═══════════ EXPERIENCE ═══════════ -->
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <!-- ── SICK: Data Scientist ─────────────── -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Data Scientist</span>
+                <span class="entry-date">Jun 2021 – Present</span>
+            </div>
+            <div class="entry-org">SICK Sensor Intelligence · Full-time</div>
+            <div class="entry-location">Hamburg, Germany · Hybrid</div>
+            <p class="entry-summary">
+                R&amp;D Data Scientist building scalable perception and analytics systems for autonomous and safety-critical applications.
+            </p>
+            <ul>
+                <li>Designed scalable, modular architectures and end-to-end data pipelines across AWS and Azure (VMs, storage, compute).</li>
+                <li>Developed and deployed computer-vision models for object detection, tracking, and human-feature extraction using PyTorch and TensorFlow.</li>
+                <li>Implemented ROS2-based perception stacks and containerized services with Docker for reproducible edge deployments.</li>
+                <li>Processed and analyzed large-scale video, LiDAR, and point-cloud data for autonomous-system evaluation.</li>
+                <li><strong>HEAT Autonomous Bus:</strong> Built multi-object detection/tracking modules and sensor-data pipelines supporting autonomous navigation.</li>
+                <li><strong>SAFE20:</strong> Designed the evaluation pipeline for protective-field assessment and performed data-driven safety analysis.</li>
+                <li><strong>Feature Extraction Pipeline:</strong> Built OOP-based perception workflow to extract human features from 2D RGB → 3D; adopted by production teams.</li>
+                <li><strong>Point-Cloud Tracking:</strong> Trained PointPillars on synthetic data and deployed inference on real data using NVIDIA GPUs and Docker.</li>
+                <li><strong>Reliable Person Detection:</strong> Evaluated YOLOX, RTMDet, and other models; delivered actionable insights for safety-critical perception.</li>
+                <li><strong>AGC Optimization:</strong> Designed perception and analytics pipelines on NVIDIA edge devices (TensorRT) and Azure cloud (MongoDB, Grafana).</li>
+            </ul>
+        </div>
+
+        <!-- ── SICK: Master Thesis ──────────────── -->
+        <div class="entry">
+            <div class="sub-role">
+                <div class="entry-header">
+                    <span class="entry-title">Master Thesis — Predictive Analysis &amp; Development</span>
+                    <span class="entry-date">Oct 2020 – Mar 2021</span>
+                </div>
+                <div class="entry-org">SICK Sensor Intelligence · Full-time</div>
+                <div class="entry-location">Hamburg, Germany · On-site</div>
+                <p class="entry-summary">
+                    Developed time-series forecasting models for predictive maintenance of IoT devices, deployed as a digital service offering.
+                </p>
+                <ul>
+                    <li>Researched and implemented statistical (ARIMA, Prophet), ML (regression), and deep-learning (AR-Net, LSTM) forecasting methods.</li>
+                    <li>Built neural-network models in TensorFlow with hyperparameter optimization for improved forecasting accuracy.</li>
+                    <li>Evaluated all models using MAE, MSE, and RMSE; finalized a generic, modular solution adaptable across customer applications.</li>
+                    <li>Contributed to production deployment of the predictive models as a digital service for real SICK customers.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ── SICK: Intern ─────────────────────── -->
+        <div class="entry">
+            <div class="sub-role">
+                <div class="entry-header">
+                    <span class="entry-title">Data Science Intern</span>
+                    <span class="entry-date">Apr 2020 – Sep 2020</span>
+                </div>
+                <div class="entry-org">SICK Sensor Intelligence · Internship</div>
+                <div class="entry-location">Hamburg, Germany · On-site</div>
+                <p class="entry-summary">
+                    Explored and modeled time-series patterns on IoT sensor data; built reusable analytics pipelines.
+                </p>
+                <ul>
+                    <li>Performed in-depth EDA on SICK IoT sensor time-series data to uncover operational patterns and anomalies.</li>
+                    <li>Investigated classical and ML-based time-series forecasting methods; prototyped RNN/LSTM architectures for temporal pattern recognition.</li>
+                    <li>Automated the full analysis, feature-extraction, and visualization workflow into a generic, reusable pipeline for multiple IoT use cases.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ── TCS ──────────────────────────────── -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">IT Analyst &amp; Technical Lead</span>
+                <span class="entry-date">Sep 2011 – Sep 2018</span>
+            </div>
+            <div class="entry-org">Tata Consultancy Services · Full-time</div>
+            <div class="entry-location">Kolkata, India · On-site</div>
+            <p class="entry-summary">
+                Led a 15-member team delivering data-warehousing, BI, and risk-analytics solutions for global banking clients.
+            </p>
+            <ul>
+                <li>Delivered end-to-end data solutions for Citi Bank's Wholesale Risk Data Warehouse using Ab Initio ETL, SQL/PL-SQL, and Unix shell workflows.</li>
+                <li>Performed EDA and built Python-based visualizations to uncover trends in financial datasets.</li>
+                <li>Designed and optimized SQL/PL-SQL pipelines and automated Shell-based workflows, improving process efficiency.</li>
+                <li>Built dashboards in Cognos and MicroStrategy to support business intelligence and executive decision-making.</li>
+                <li>Managed production deployments, code reviews, and root-cause analysis to minimize downtime.</li>
+                <li>Collaborated with stakeholders to identify data-quality issues, propose improvements, and reduce downstream business impact.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ═══════════ AWARDS ═══════════ -->
+    <div class="section">
+        <div class="section-title">Awards &amp; Recognitions</div>
+        <div class="entry">
+            <ul class="awards-list">
+                <li><strong>STIBET Scholarship 2020</strong> — Awarded by SRH University Heidelberg for involvement in Student Orientation Programme 2019 and the 10th International Week, along with good grades</li>
+                <li><strong>Service &amp; Commitment Award</strong> — 3 and 5 years of dedicated contribution at TCS</li>
+                <li><strong>Best Team Member (3×)</strong> — Proactive problem-solving and impactful contributions</li>
+                <li><strong>On the Spot Star Award</strong> — Automation scripts improving operational efficiency</li>
+                <li><strong>Star of the Month</strong> — Exceptional ownership during migration activities</li>
+                <li><strong>Star of the Quarter</strong> — Outstanding project contributions</li>
+                <li>Multiple client and leadership appreciations for quick issue resolution and analytical thinking</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ═══════════ EDUCATION ═══════════ -->
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Master's Degree — Big Data &amp; Business Analytics</span>
+                <span class="entry-date">Oct 2018 – Mar 2021</span>
+            </div>
+            <div class="entry-org">SRH University, Heidelberg, Germany</div>
+            <div class="entry-location">
+                Grade: 1.5 / 4.0 (1.0 = highest)<br>
+                <em>Thesis: "Predictive Analysis &amp; Development for Data-Driven Software Services" (conducted at SICK Sensor Intelligence)</em><br>
+                STIBET Scholarship 2020 — awarded for involvement in Student Orientation Programme 2019 and the 10th International Week, along with good grades.
+            </div>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Bachelor of Technology — Computer Science</span>
+                <span class="entry-date">Aug 2007 – Jul 2011</span>
+            </div>
+            <div class="entry-org">West Bengal University of Technology, Kolkata, India</div>
+            <div class="entry-location">Grade: 7.5 / 10.0</div>
+        </div>
+    </div>
+
+</div><!-- /.page -->
+
+</body>
+</html>
